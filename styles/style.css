@@ -1,5 +1,352 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  font-family: 'IBM Plex mono', monospace;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
+
+.link {
+  color: var(--text-color);
+  text-decoration: none;
+  text-shadow: 1.5px 1.5px 0 var(--accent-color);
+}
+
+.simple-zone {
+  display: grid;
+  position: relative;
+  margin: clamp(10px, 0.0286rem + 2.5445vw, 20px);
+  min-height: calc(100vh - 40px);
+}
+
+.simple-zone::before {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  right: 0;
+  border-top: 1px solid var(--simple-zone-border-color, #ff0070);
+  border-right: 1px solid var(--simple-zone-border-color, #ff0070);
+}
+
+.simple-zone::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid var(--simple-zone-border-color, #ff0070);
+  border-left: 1px solid var(--simple-zone-border-color, #ff0070);
+}
+/* заголовок */
+.header {
+  display: grid;
+  position: relative;
+  min-height: 100vh;
+  grid-template-rows: 1fr min-content 1fr;
+}
+
+.header__rec {
+  color: var(--accent-color);
+  position: absolute;
+  top: 0;
+  right: 30px;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 1.39;
+}
+
+.header__theme-menu {
+  margin: 65px 0;
+  justify-self: end;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 5px 0 0 0;
+  list-style: none;
+}
+
+.header__rec::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  top: 50%;
+  right: -20px;
+  background-color: var(--accent-color);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  box-shadow: 0 0 4px 2px var(--accent-color);
+}
+
+.header__theme-menu-button {
+  color: var(--menu-color);
+  padding: 2px 12px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--menu-hover-color);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px solid var(--menu-color);
+}
+
+.header__title {
+  color: var(--title-color);
+  margin: -15px 0 0 0;
+  text-shadow: 4px 4px 0 var(--accent-color);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 0.825;
+  grid-row: 2;
+}
+
+.header__description {
+  align-self: center;
+  grid-row: 3;
+  justify-self: end;
+  margin-top: -25px;
+}
+
+.header__description-text {
+  margin: 5px 0 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23.4px;
+}
+
+.header__theme-menu-button_active {
+  pointer-events: none;
+  outline: 1px solid var(--menu-color);
+}
+
+.simple-title {
+  color: var(--decorated-text-color);
+  background-color: var(--accent-color);
+}
+
+@media (width >= 768px) {
+  .header__title {
+    margin: -40px -20px 0 -20px;
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+  .header__description {
+    margin-top: -46px;
+    max-width: 50%;
+  }
+  .header__theme-menu-list {
+    padding: 110px 0 0 0;
+  }
+}
+
+@media (width >= 1024px) {
+  .header__theme-menu {
+    margin: 0;
+    justify-self: center;
+  }
+
+  .header__theme-menu-list {
+    padding: 0;
+    flex-direction: row;
+  }
+}
+/*  */
+
+/* главная часть (без галереи)*/
+.main {
+  margin: -7px 10px 0 10px;
+}
+
+.section {
+  font-size: 18px;
+  margin: 0;
+  padding-top: 28px;
+}
+
+.article__title {
+  font-size: 18px;
+  line-height: 23.4px;
+}
+
+.section__title {
+  color: var(--menu-color);
+  font-size: 18px;
+  line-height: 23.4px;
+  padding-bottom: 20px;
+}
+
+.article__sub-title {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.section:nth-child(3) .article__title {
+  margin-bottom: 22px;
+}
+
+
+.article__text {
+  color: var(--text-color);
+  line-height: 23.4px;
+  padding: 10px 0 20px 0;
+}
+
+@media (width >= 768px) {
+  .main {
+    padding: 0 10px;
+    margin: -56px 10px 0 10px;
+  }
+
+  .section {
+    padding-top: 60px;
+  }
+
+  .section:first-child,
+  .section:nth-child(3) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px 18px;
+  }
+  .section:first-child {
+    padding-top: 76px;
+  }
+
+  .section:nth-child(3) {
+    padding-top: 60px;
+  }
+
+  .section__content {
+    grid-column: 2;
+  }
+  .section__title {
+    grid-column: 1;
+    max-width: 236px;
+  }
+}
+
+@media (width >= 1024px) {
+
+  .section__title {
+    grid-column: 1;
+    max-width: none;
+  }
+
+  .section:first-child,
+  .section:nth-child(3) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px 12px;
+  }
+
+  .section:nth-child(2) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0;
+  }
+
+  .section:nth-child(2) .section__title {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .section:nth-child(2) .section__content {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+/*  */
+
+/* галерея */
+.gallery {
+  display: grid;
+  gap: 10px;
+  padding: 20px 0 50px 0;
+}
+
+.gallery__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery__image:first-child {
+  margin-top: -10px;
+}
+
+@media (width >= 768px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1.25fr 1.65fr;
+    grid-template-areas: "wide wide food"
+                         "cassette books food"
+                         "cassette street street";
+    gap: 12px 20px;
+    padding: 20px 0 66px 0;
+  }
+  .gallery__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .gallery__image:nth-child(1) {
+    grid-area: wide;
+  }
+  .gallery__image:nth-child(2) {
+    grid-area: food;
+  }
+  .gallery__image:nth-child(3) {
+    grid-area: cassette;
+  }
+  .gallery__image:nth-child(4) {
+    grid-area: books;
+  }
+  .gallery__image:nth-child(5) {
+    grid-area: street;
+  }
+}
+/*  */
+
+/* футер */
+.footer__title {
+  color: var(--title-color);
+  text-shadow: 2px 2px 0 var(--accent-color);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 0.825;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+  position: relative;
+  min-height: 100vh;
+}
+
+@media (width >= 768px) {
+  .footer__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+/*  */
